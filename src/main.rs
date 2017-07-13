@@ -10,7 +10,7 @@ use winapi::{HMENU, HICON, HCURSOR, HBRUSH};
 use winapi::{HINSTANCE, WNDCLASSW, CS_VREDRAW, CS_HREDRAW, WS_OVERLAPPEDWINDOW, WS_VISIBLE};
 use winapi::WM_DESTROY;
 
-use user32::{RegisterClassW, CreateWindowExW, MessageBoxA};
+use user32::{RegisterClassW, CreateWindowExW, MessageBoxA, GetDesktopWindow};
 use user32::{GetMessageW, TranslateMessage, DispatchMessageW};
 use user32::{DefWindowProcW, PostQuitMessage};
 
@@ -21,11 +21,11 @@ use std::iter::once;
 use std::os::windows::ffi::OsStrExt;
 
 fn main() {
-    init_window(3700, 2000)
+    init_window(480, 360)
 }
 
 fn init_window(width: i32, height: i32) {
- 
+
     let wnd = WNDCLASSW {
         style: CS_VREDRAW | CS_HREDRAW,
         lpfnWndProc: Some(window_proc),
@@ -41,6 +41,7 @@ fn init_window(width: i32, height: i32) {
 
     unsafe {
         RegisterClassW(&wnd);
+        let h_wnd_desktop = user32::GetDesktopWindow();
         let window = CreateWindowExW(
             0,
             to_wstring("Rustering_engine") as *mut _,
@@ -50,7 +51,7 @@ fn init_window(width: i32, height: i32) {
             0,
             width,
             height,
-            0 as HWND,
+            h_wnd_desktop,
             0 as HMENU,
             0 as HINSTANCE,
             std::ptr::null_mut(),

@@ -2,10 +2,15 @@
 name = "game_programming_dx12"
 version = "0.1.0"
 dependencies = [
+ "dxgi 0.1.0",
  "kernel32-sys 0.2.2 (registry+https://github.com/rust-lang/crates.io-index)",
  "user32-sys 0.2.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "winapi 0.2.8 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
+
+[[package]]
+name = "dxgi"
+version = "0.1.0"
 
 [[package]]
 name = "kernel32-sys"

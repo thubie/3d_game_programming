@@ -7,3 +7,6 @@ authors = ["dragonelite <thubie90@live.nl>"]
 winapi = "0.2.8"
 user32-sys = "0.2.0"
 kernel32-sys = "0.2.2"
+dxgi = {path = "dxgi"}
+
+[workspace]
