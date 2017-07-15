@@ -3,6 +3,7 @@
 extern crate winapi;
 extern crate user32;
 extern crate kernel32;
+extern crate dxgi-rs;
 
 use winapi::{UINT, WPARAM, LPARAM, LRESULT, LPCWSTR};
 use winapi::windef::HWND;
@@ -10,20 +11,21 @@ use winapi::{HMENU, HICON, HCURSOR, HBRUSH};
 use winapi::{HINSTANCE, WNDCLASSW, CS_VREDRAW, CS_HREDRAW, WS_OVERLAPPEDWINDOW, WS_VISIBLE};
 use winapi::WM_DESTROY;
 
-use user32::{RegisterClassW, CreateWindowExW, MessageBoxA, GetDesktopWindow};
+use user32::{RegisterClassW, CreateWindowExW};
 use user32::{GetMessageW, TranslateMessage, DispatchMessageW};
 use user32::{DefWindowProcW, PostQuitMessage};
 
 use std::mem::zeroed;
 use std::ffi::OsStr;
-use std::ptr::null;
 use std::iter::once;
 use std::os::windows::ffi::OsStrExt;
 
 fn main() {
+    dxgi::test();
     init_window(480, 360)
 }
 
+#[warn(unused_variables)]
 fn init_window(width: i32, height: i32) {
 
     let wnd = WNDCLASSW {
@@ -46,9 +48,9 @@ fn init_window(width: i32, height: i32) {
             0,
             to_wstring("Rustering_engine") as *mut _,
             to_wstring("Rustering_engine") as *mut _,
-            WS_OVERLAPPEDWINDOW | WS_VISIBLE,
-            0,
-            0,
+            WS_OVERLAPPEDWINDOW | WS_VISIBLE, 
+            10,
+            10,
             width,
             height,
             h_wnd_desktop,

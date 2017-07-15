@@ -1,6 +1,0 @@
-[package]
-name = "dxgi"
-version = "0.1.0"
-authors = ["dragonelite <thubie90@live.nl>"]
-
-[dependencies]
