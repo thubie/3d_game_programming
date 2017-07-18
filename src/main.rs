@@ -1,9 +1,9 @@
-#![windows_subsystem = "windows"]
+//#![windows_subsystem = "windows"]
 
 extern crate winapi;
 extern crate user32;
 extern crate kernel32;
-extern crate dxgi-rs;
+extern crate gfxinfra;
 
 use winapi::{UINT, WPARAM, LPARAM, LRESULT, LPCWSTR};
 use winapi::windef::HWND;
@@ -21,7 +21,6 @@ use std::iter::once;
 use std::os::windows::ffi::OsStrExt;
 
 fn main() {
-    dxgi::test();
     init_window(480, 360)
 }
 
@@ -48,7 +47,7 @@ fn init_window(width: i32, height: i32) {
             0,
             to_wstring("Rustering_engine") as *mut _,
             to_wstring("Rustering_engine") as *mut _,
-            WS_OVERLAPPEDWINDOW | WS_VISIBLE, 
+            WS_OVERLAPPEDWINDOW | WS_VISIBLE,
             10,
             10,
             width,

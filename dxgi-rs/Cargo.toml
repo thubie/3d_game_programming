@@ -1,5 +1,5 @@
 [package]
-name = "dxgi-rs"
+name = "gfxinfra"
 version = "0.1.0"
 authors = ["dragonelite <thubie90@live.nl>"]
 
